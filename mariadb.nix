@@ -26,7 +26,7 @@ in pkgs.mkShell {
     finish()
     {
       mysqladmin -u root --socket=$MYSQL_UNIX_PORT shutdown
-      kill $MYSQL_PID
+      kill $MYSQL_PID 2>/dev/null
       wait $MYSQL_PID
     }
     trap finish EXIT
